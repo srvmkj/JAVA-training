@@ -16,5 +16,6 @@ public class Cats extends Animal implements Hunter, Jumper, Runner{
 	
 	public void move(int dist){
 			System.out.println("Cat is moving "+dist+" distance.");
+			System.out.println("cat moving");
 	}
 }
