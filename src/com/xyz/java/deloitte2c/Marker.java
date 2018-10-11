@@ -1,38 +1,79 @@
 package com.xyz.java.deloitte2c;
 
 public class Marker {
-	public static String category="Pen";
+	
+	public static String category= "pen";
 	final String brand;
-	String color;
+	private String color;
 	private double price;
-	public Marker(){
-		//System.out.println("Marker object created");
-		price=25.0;
-		brand="Camlin";
-		color="black";
-	}
-	public static void setCategory(String category)
+	
+	public final static String BLUE;
+	public final static String RED;
+	public final static String GREEN;
+	public final static String BLACK;
+	
+	static
 	{
-		Marker.category=category;
-	}
-	public Marker(String b, String c, double price){
-		brand=b;
-		color=c;
-		this.price=price;
+		BLUE = "Blue";
+		BLACK = "Black";
+		GREEN = "Green";
+		RED = "Red";
 	}
 	
-		
-	public void setPrice(double price){
-		if (this.price > 0)
-			this.price=price;
-		else
-			System.out.println("Invalid price");
+	
+	
+	public Marker(){
+		price = 20.0;
+		color = "black";
+		brand = "camlin";
 	}
-	public double getPrice(){
+	public Marker(String b){
+		brand = b;
+		price = 20.0;
+		color = "black";
+	}
+	public Marker(String b,String c,double p){
+		brand = b;
+		color = c;
+		price = p;
+	}
+	public double getPrice()
+	{
 		return price;
 	}
-	
-	public void write(String input){
-		System.out.println(input);
+	public String getColor()
+	{
+		return color;
 	}
+	public void setColor(String color)
+	{
+		switch (color)
+		{
+		case "Blue":
+		case "Green":
+		case "Black":
+		case "Red":
+			this.color = color;
+			break;
+		default: 
+			throw new MarkerColorNotSupportedException();
+		}
+	}
+	public void setPrice(double price) throws IllegalArgumentException
+	{
+		if(price > 0)
+			 this.price = price;
+		else
+			throw new IllegalArgumentException();
+		
+	}
+/*	public static void printPrice()
+	{
+		System.out.println(price);
+	}*/
+	public static void setCategory(String category)
+	{
+		Marker.category = category;
+	}
+
 }
